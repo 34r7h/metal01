@@ -1,0 +1,18 @@
+<div
+    ng-init="landingID = (location||0)"
+    class="text-center"
+    style="display: table; height: {{height}}px ; width:100%;background-position:center;background-repeat: no-repeat;background-image: url('{{media.$getRecord(data.image[0]).mediaURL}}');background-size: 100% 100%"
+   >
+
+    <div class="clearfix"
+        style=" width:100%;display:table-cell; color:#f5f5f5; font-size: 200%;  height:100%;vertical-align:middle; ">
+        <b style="font-size: 200%">Welcome to {{data.url}}</b>
+        <p style="color:white">{{data.text}}</p>
+        <div class="col-xs-12 text-center">
+            <button class="btn btn-default">Forging Technology</button>
+        </div>
+    </div>
+
+
+
+</div>
