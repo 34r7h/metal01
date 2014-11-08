@@ -60,7 +60,7 @@ module.exports = function (grunt) {
         options: {
             jshintrc: '.jshintrc'
         },
-        src: createFolderGlobs('*.js')
+        src: createFolderGlobs(['*.js','!web.js'])
       }
     },
     clean: {
@@ -132,8 +132,7 @@ module.exports = function (grunt) {
     concat: {
       main: {
         src: ['<%= dom_munger.data.appjs %>','<%= ngtemplates.main.dest %>'],
-          // workaround for gh-pages error
-        dest: 'dist/app.full.min.js'
+        dest: 'temp/app.full.js'
       }
     },
     ngmin: {
@@ -191,11 +190,11 @@ module.exports = function (grunt) {
       },
       during_watch: {
         browsers: ['PhantomJS']
-      },
+      }
     }
   });
 
-  grunt.registerTask('build',['jshint','clean:before','less','dom_munger','ngtemplates','cssmin','concat',/*'ngmin','uglify',*/'copy','htmlmin','imagemin','clean:after']);
+  grunt.registerTask('build',['jshint','clean:before','less','dom_munger','ngtemplates','cssmin','concat','ngmin','uglify','copy','htmlmin','imagemin','clean:after']);
   grunt.registerTask('serve', ['dom_munger:read','jshint','connect', 'watch']);
   grunt.registerTask('test',['dom_munger:read','karma:all_tests']);
 
