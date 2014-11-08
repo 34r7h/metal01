@@ -1,4 +1,4 @@
-angular.module('metal01').controller('LandingCtrl',
+angular.module('metal01').controller('LandingCtrl', ['$scope', '$firebase', 'Firebase', '$window', '$location' ,
     function($scope, $firebase, Firebase, $window, $location){
 
         var location = $location.host();
@@ -38,4 +38,4 @@ angular.module('metal01').controller('LandingCtrl',
 
 
 
-});
+}]);
