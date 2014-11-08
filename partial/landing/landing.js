@@ -3,7 +3,8 @@ angular.module('metal01').controller('LandingCtrl', ['$scope', '$firebase', 'Fir
 
         var location = $location.host();
         location.toLowerCase().replace(/'+/g, '').replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "-").replace(/^-+|-+$/g, '');
-        var indexRef = new Firebase("https://metal.firebaseio.com/index/domains/"+ location);
+        var refString = "https://metal.firebaseio.com/index/domains/"+ location;
+        var indexRef = new Firebase(refString);
         console.log('indexRef',indexRef);
         var indexSync = $firebase(indexRef);
         console.log('indexSync',indexSync);
