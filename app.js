@@ -5,7 +5,12 @@ angular.module('metal01').config(function($stateProvider, $urlRouterProvider) {
     $stateProvider.state('landing', {
         url: '/',
         controller: 'LandingCtrl',
-        templateUrl: 'partial/landing/landing.html'
+        templateUrl: 'partial/landing/landing.html',
+        resolve: {
+            data: function(data){
+                return data;
+            }
+        }
     });
     /* Add New States Above */
     $urlRouterProvider.otherwise('/');
