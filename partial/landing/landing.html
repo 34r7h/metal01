@@ -1,7 +1,7 @@
 <div
     ng-init="landingID = (location||0)"
     class="text-center"
-    style="display: table; height: {{height}}px ; width:100%;background-position:center;background-repeat: no-repeat;background-size: 100% 100%"
+    style="display: table; height: {{height}}px ; width:100%;background-position:center;background-repeat: no-repeat;background-image: url('{{media.$getRecord(data.image[0]).mediaURL}}');background-size: 100% 100%"
    >
 
     <div class="clearfix"

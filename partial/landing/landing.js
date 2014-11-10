@@ -3,29 +3,45 @@ angular.module('metal01').controller('LandingCtrl', ['$scope', '$firebase', 'Fir
 
         var location = $location.host();
         location.toLowerCase().replace(/'+/g, '').replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "-").replace(/^-+|-+$/g, '');
-        var refString = "https://metal.firebaseio.com/index/domains/"+ location;
-        var indexRef = new Firebase(refString);
-        console.log('indexRef',indexRef);
-        var indexSync = $firebase(indexRef);
-        console.log('indexSync',indexSync);
-        var indexArray = indexSync.$asArray();
-        var indexObject = indexSync.$asObject();
+        var refString = "https://metal.firebaseio.com/index/domains/"+ location.toString() +"/";
+        $scope.height = $window.innerHeight;
+        $scope.location = $location.host();
 
         setTimeout(function(){
-            console.log('domainRef',indexObject.$value);
-            var domainRef = 'https://metal.firebaseio.com/domains/'+indexObject.$value;
-            var ref = new Firebase(domainRef);
-            var sync = $firebase(ref);
+
+            var indexRef = new Firebase(refString);
+            var mediaRef = new Firebase('https://metal.firebaseio.com/media');
             var mediaSync = $firebase(mediaRef);
-            $scope.data = sync.$asObject();
-            console.log('data',$scope.data);
-            $scope.list = sync.$asArray();
-            console.log('list',$scope.list);
-            $scope.media = mediaSync.$asArray();
-            $scope.height = $window.innerHeight;
-            $scope.location = $location.host();
-        },2000);
-        var mediaRef = new Firebase("https://metal.firebaseio.com/media/");
+            var indexSync = $firebase(indexRef);
+            var indexArray = indexSync.$asArray();
+            var indexObject = indexSync.$asObject();
+
+            setTimeout(function(){
+
+                var indexValue = indexObject.$value;
+                var domainRef = 'https://metal.firebaseio.com/domains/'+indexValue;
+                var ref = new Firebase(domainRef);
+                var sync = $firebase(ref);
+                $scope.data = sync.$asObject();
+                $scope.list = sync.$asArray();
+                $scope.media = mediaSync.$asArray();
+
+                setTimeout(function(){
+                    console.log('indexObject',indexObject.$value);
+                    console.log('indexValue',indexValue);
+                    console.log('domainRef',domainRef);
+                    console.log('ref',ref);
+                    console.log('sync',sync);
+                    console.log('refString',refString);
+                    console.log('indexRef',indexRef);
+                    console.log('data',$scope.data);
+                    console.log('list',$scope.list);
+                    console.log('media',$scope.media);
+                },2000);
+
+            }, 2000);
+
+        },1000);
 
 
 
@@ -39,4 +55,6 @@ angular.module('metal01').controller('LandingCtrl', ['$scope', '$firebase', 'Fir
 
 
 
-}]);
+
+
+    }]);
