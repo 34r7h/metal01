@@ -20,7 +20,7 @@ angular.module('metal01').controller('LandingCtrl', ['$scope', '$firebase', 'Fir
 
                 var indexValue = indexObject.$value;
                 var domainRef = 'https://metal.firebaseio.com/domains/'+indexValue;
-                var ref = new Firebase(domainRef);
+                var ref = new Firebase(domainRef.toString());
                 var sync = $firebase(ref);
                 $scope.data = sync.$asObject();
                 $scope.list = sync.$asArray();
