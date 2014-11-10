@@ -1,9 +1,9 @@
 angular.module('metal01').controller('LandingCtrl', ['$scope', '$firebase', 'Firebase', '$window', '$location' ,
     function($scope, $firebase, Firebase, $window, $location){
-
+        var baseURL = 'https://metal.firebaseio.com/';
         var location = $location.host();
         location.toLowerCase().replace(/'+/g, '').replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "-").replace(/^-+|-+$/g, '');
-        var refString = "https://metal.firebaseio.com/index/domains/"+ location.toString() +"/";
+        var refString = baseURL+'index/domains/'+ location;
         refString.replace(/\/|:|#|%|\.|\[|\| ]/g, '');
         $scope.height = $window.innerHeight;
         $scope.location = $location.host();
@@ -11,7 +11,7 @@ angular.module('metal01').controller('LandingCtrl', ['$scope', '$firebase', 'Fir
         setTimeout(function(){
 
             var indexRef = new Firebase(refString);
-            var mediaRef = new Firebase('https://metal.firebaseio.com/media');
+            var mediaRef = new Firebase(baseURL+'media');
             var mediaSync = $firebase(mediaRef);
             var indexSync = $firebase(indexRef);
             var indexArray = indexSync.$asArray();
@@ -20,7 +20,7 @@ angular.module('metal01').controller('LandingCtrl', ['$scope', '$firebase', 'Fir
             setTimeout(function(){
 
                 var indexValue = indexObject.$value;
-                var domainRef = 'https://metal.firebaseio.com/domains/'+indexValue;
+                var domainRef = baseURL+'domains/'+indexValue;
                 var ref = new Firebase(domainRef);
                 var sync = $firebase(ref);
                 $scope.data = sync.$asObject();
