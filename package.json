@@ -1,6 +1,9 @@
 {
   "name": "metal01",
   "version": "0.0.0",
+  "dependencies":{
+    "express":"latest"
+    },
   "devDependencies": {
     "grunt": "~0.4",
     "grunt-dom-munger": "~3.4",
