@@ -27,8 +27,6 @@ angular.module('metal01').controller('LandingCtrl', ['$scope', '$firebase', 'Fir
                 $scope.data = sync.$asObject();
                 $scope.list = sync.$asArray();
                 $scope.media = mediaSync.$asArray();
-                $rootScope.title = sync.title;
-                $rootScope.description = sync.description;
 
                 setTimeout(function(){
                     console.log('indexObject',indexObject.$value);
