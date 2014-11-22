@@ -1,5 +1,5 @@
-angular.module('metal01').controller('LandingCtrl', ['$scope', '$firebase', 'Firebase', '$window', '$location' ,
-    function($scope, $firebase, Firebase, $window, $location){
+angular.module('metal01').controller('LandingCtrl', ['$scope', '$firebase', 'Firebase', '$window', '$location','$rootScope',
+    function($scope, $firebase, Firebase, $window, $location, $rootScope){
         var baseURL = 'https://metal.firebaseio.com/';
         var location = $location.host();
         location.toLowerCase().replace(/'+/g, '').replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "-").replace(/^-+|-+$/g, '');
@@ -27,6 +27,8 @@ angular.module('metal01').controller('LandingCtrl', ['$scope', '$firebase', 'Fir
                 $scope.data = sync.$asObject();
                 $scope.list = sync.$asArray();
                 $scope.media = mediaSync.$asArray();
+                $rootScope.title = $scope.data.title;
+                $rootScope.description = $scope.data.description;
 
                 setTimeout(function(){
                     console.log('indexObject',indexObject.$value);
