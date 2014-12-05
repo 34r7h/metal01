@@ -5,7 +5,7 @@ angular.module('metal01').controller('LandingCtrl', ['$scope', '$firebase', 'Fir
         location.toLowerCase().replace(/'+/g, '').replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "-").replace(/^-+|-+$/g, '');
         var refString = baseURL+'index/domains/'+ location.replace(/\./g, '-');
         // refString.replace(/\/|:|#|%|\.|\[|\| ]/g, '');
-        console.log('refString',refString);
+        // console.log('refString',refString);
         $scope.height = $window.innerHeight;
         $scope.location = $location.host();
 
@@ -28,7 +28,7 @@ angular.module('metal01').controller('LandingCtrl', ['$scope', '$firebase', 'Fir
                 $scope.list = sync.$asArray();
                 $scope.media = mediaSync.$asArray();
 
-                setTimeout(function(){
+                setTimeout(function(){/*
                     console.log('indexObject',indexObject.$value);
                     console.log('indexValue',indexValue);
                     console.log('domainRef',domainRef);
@@ -39,7 +39,7 @@ angular.module('metal01').controller('LandingCtrl', ['$scope', '$firebase', 'Fir
                     console.log('data',$scope.data);
                     console.log('list',$scope.list);
                     console.log('media',$scope.media);
-                },2000);
+                */},2000);
 
             }, 2000);
 
